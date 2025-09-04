@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Calculater</title>
+    <style>
+      body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background: black;
+      }
+      .calculater{
+        border: 2px solid white;
+        display: grid;
+        grid-template-rows: repeat(5,70px);
+        padding: 2px 20px 2px 20px;
+        background-color: white;
+      }
+      .ac{
+        background-color: orange;
+        color: black;
+        font-style: bold;
+        font-size: 20px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 2px solid black;
+        cursor: pointer;
+        text-align: center;
+      }
+      .seven{
+        background-color: black;
+        color: white;
+        font-style: bold;
+        font-size: 20px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 2px solid white;
+        cursor: pointer;
+        text-align: center;
+      }
+      .numCalculation{
+        font-size: 30px;
+        text-align: right;
+        font-weight: bold;
+
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div class="calculater">
+
+    <p class="js-updatedCalculation numCalculation"></p>
+
+    <p>
+
+			<button onclick="calculater = ''; localStorage.setItem('calculater',calculater); displayCalculation();" class="ac">AC</button>
+
+			<button onclick="updateCalculate(' % ');" class="ac">%</button>
+
+			<button onclick="updateCalculate(' ');" class="ac">Del</button>
+
+			<button onclick="updateCalculate(' / ');" class="ac">/</button>
+
+
+		</p>
+
+		<p>
+
+			<button onclick="updateCalculate('7');" class="seven">7</button>
+
+			<button onclick="updateCalculate('8');" class="seven">8</button>
+
+			<button onclick="updateCalculate('9');" class="seven">9</button>
+
+			<button onclick="updateCalculate(' * ');" class="ac">*</button>
+
+		</p>
+
+		<p>
+
+			<button onclick="updateCalculate('4');" class="seven">4</button>
+
+			<button onclick="updateCalculate('5');" class="seven">5</button>
+
+			<button onclick="updateCalculate('6');" class="seven">6</button>
+
+			<button onclick="updateCalculate('-');" class="ac">-</button>
+
+		</p>
+		
+		<p>
+
+			<button onclick="updateCalculate('1');" class="seven">1</button>
+
+			<button onclick="updateCalculate('2');" class="seven">2</button>
+
+			<button onclick="updateCalculate('3');" class="seven">3</button>
+
+			<button onclick="updateCalculate(' + ');" class="ac">+</button>
+
+		</p>
+
+		<p>
+
+			<button onclick="updateCalculate('00');" class="seven">00</button>
+
+			<button onclick="updateCalculate('0');" class="seven">0</button>
+
+			<button onclick="updateCalculate(' . ');" class="seven">.</button>
+
+			<button onclick="
+				calculater = eval(calculater);
+				displayCalculation();" class="ac">=</button>
+
+		</p>
+
+    </div>
+
+    <script>
+      let calculater = "";
+
+      let calculation = localStorage.getItem('calculater') || '';
+
+				displayCalculation();
+
+      function updateCalculate(num){
+        calculater +=num;
+        displayCalculation();
+
+        localStorage.setItem('calculater',calculater);
+      }
+
+      function displayCalculation() {
+        document.querySelector('.js-updatedCalculation')
+        .innerHTML = calculater;
+      }
+    </script>
+
+  </body>
+</html>
